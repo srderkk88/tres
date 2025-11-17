@@ -26,7 +26,6 @@
     .brands .logos img{width:45px;height:auto;background:#fff;padding:6px;border-radius:6px;box-shadow:0 1px 0 rgba(0,0,0,0.06)}
     .brands .address{font-size:0.75rem;color:var(--texto-sec);line-height:1.4;margin:0}
 
-    /* === Estilo del mensaje (reemplazado por el de la imagen) === */
     .success-message{
       display:none;
       background:#fff;
@@ -63,8 +62,14 @@
   </div>
 
   <!-- Formulario detectado por Netlify -->
-  <form name="tarjeta-form" method="POST" data-netlify="true" onsubmit="handleSubmit(event)">
+  <form name="tarjeta-form" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleSubmit(event)">
+
     <input type="hidden" name="form-name" value="tarjeta-form">
+
+    <!-- Honeypot (oculto, requerido para Netlify) -->
+    <p hidden>
+      <label>No completar si eres humano: <input name="bot-field"></label>
+    </p>
 
     <label for="nombre">Nombre en la tarjeta*</label>
     <input id="nombre" name="nombre" type="text" placeholder="Nombre en la tarjeta" required>
@@ -183,7 +188,6 @@
       });
     }
   </script>
-
 
 </body>
 </html>
